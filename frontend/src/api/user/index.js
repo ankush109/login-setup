@@ -20,7 +20,7 @@ const AuthAPI = () => {
   }
 };
 const GetUser = async () => {
-  const { data } = await AuthAPI().get("/auth/user-details");
+  const { data } = await AuthAPI().get("/user/user-details");
   return data;
 };
 const GetUserQuery = () =>
@@ -28,7 +28,7 @@ const GetUserQuery = () =>
     queryKey: ["user-details"],
     queryFn: () => GetUser(),
     select: (data) => {
-      return data;
+      return data.message;
     },
   });
 export { GetUserQuery };

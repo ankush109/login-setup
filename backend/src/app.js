@@ -9,7 +9,7 @@ import favicon from "serve-favicon";
 
 import "./v1/config/env.config";
 
-import { authRoutes } from "./v1/routes";
+import { authRoutes, userRoutes } from "./v1/routes";
 // New
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -49,7 +49,7 @@ const apiVersion = "v1";
 
 // Routes
 app.use(`/${apiVersion}/auth`, authRoutes);
-
+app.use(`/${apiVersion}/user`, userRoutes);
 // 404 Handler
 app.use((req, res, next) => {
   next(createError.NotFound());
